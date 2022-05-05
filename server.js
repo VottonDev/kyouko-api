@@ -3,16 +3,15 @@ const fUpload = require('express-fileupload')
 const auth = require('./lib/auth.js')
 const basicAuth = require('express-basic-auth')
 const app = expr()
-const fs = require('fs')
-
+require('fs');
 const port = 90
 
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(fUpload())
+app.use(fUpload(undefined))
 app.use(cookieParser())
 app.use(basicAuth({
     authorizer: doLogin
